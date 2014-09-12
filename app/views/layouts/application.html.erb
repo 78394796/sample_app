@@ -5,25 +5,29 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+          <script src = "http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 </head>
 <body>
+
+
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
           <%= link_to "sample app","#", id: "logo" %>
           <nav>
             <ul class="nav pull-right">
-              <li> <%= link_to "home","#", id: "home" %> </li>
-              <li> <%= link_to "help","#", id: "help" %> </li>
-              <li> <%= link_to "sign in","#", id: "sign in" %> </li>
+              <li> <%= link_to "home", '/homepage/index/' %> </li>
+              <li> <%= link_to "help", help_path %> </li>
+              <li> <%= link_to "about", about_path %> </li>
             </ul>
           </nav>
-        </div>
+         </div>
       </div>
     </header>
 
-
-    <div class="container">
+    <div id="box" class="container">
       <%= yield %>
     </div>
 

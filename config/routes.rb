@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
-  get 'homepage/index'
+  resources :users
+
+  get 'sign/sign_in'
+
+  match 'signup',to: 'users#new', via: 'get'
+
+  match 'show',to: 'users#show', via: 'get'
+
+  match '/index',to: 'homepage#index',via: 'get'
+
+  match '/help',to: 'homepage#help',via: 'get'
+
+  match '/about',to: 'homepage#about',via: 'get'
 
   get 'homepage/sign_in'
 
-  get 'homepage/sign_upe'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
