@@ -5,13 +5,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
 
-    if user && user.authenticate(params[:session][:password])
+    if user_sign_in params
+
     else
       flash[:error] = "Invalid email/password combination"
       render 'new'
     end
+
   end
 
   def destroy
@@ -20,8 +21,8 @@ class SessionsController < ApplicationController
 
   private
 
-  def session_params
-    params.require(:session).permit(:email, :password)
+  def user_sign_in(params)
+    User.find_by(email: params[:session][:email].downcase) ? user.password == params[:session][:password] : nil
   end
 
 end
